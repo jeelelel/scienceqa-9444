@@ -47,8 +47,8 @@ def main():
     tokenizer = BertTokenizer.from_pretrained(BERT_MODEL_NAME)
     model = BertModel.from_pretrained(BERT_MODEL_NAME)
     # Load data
-    data_train = load_data("../data/ScienceQA_train.json")
-    data_test = load_data("../data/ScienceQA_test.json")
+    data_train = load_data("../data/rain.json")
+    data_test = load_data("../data/test.json")
     # Prepare lecture texts
     lecture_texts = [item.get('lecture', '') for item in data_train]
     emb_path = "../data/modern_bert_lecture_embeddings.npy"
