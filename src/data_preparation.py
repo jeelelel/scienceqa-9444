@@ -35,11 +35,12 @@ def check_and_download_dataset():
 
 def extract_and_save_text_only(ds, split_name, output_path):
     text_fields = [
-        'question', 'choices', 'lecture', 'explanation', 'answer', 'hint', 'topic', 'grade', 'subject', 'context', 'support', 'type', 'id'
-    ]
+        'question', 'choices', 'answer', 'hint', 'task', 'topic', 'grade', 'subject', 'category', 'skill', 'lecture', 'solution', 'split']
     text_data = []
     for item in ds[split_name]:
         filtered = {k: v for k, v in item.items() if k in text_fields}
+        # Ensure 'split' field is set to the current split_name
+        filtered['split'] = split_name
         text_data.append(filtered)
     with open(output_path, 'w', encoding='utf-8') as f:
         json.dump(text_data, f, ensure_ascii=False, indent=2)
